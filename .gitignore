@@ -1,0 +1,11 @@
+node_modules/
+aws-lambda-image.zip
+aws-lambda-image-layer.zip
+build/
+npm-debug.log
+*.sw?
+.idea/
+coverage
+.nyc_output
+claudia.json
+package-lock.json

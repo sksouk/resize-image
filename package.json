@@ -1,0 +1,47 @@
+{
+  "name": "aws-lambda-image",
+  "version": "1.1.0",
+  "description": "An AWS Lambda Function to resize/reduce images automatically",
+  "config": {
+    "profile": "image-resize",
+    "region": "ap-southeast-1",
+    "s3bucket": "resized-image-bucket",
+    "memory": "1280",
+    "timeout": "60",
+    "name": "image-resize",
+    "role": "LambdaRole",
+    "runtime": "nodejs14.x"
+  },
+  "scripts": {
+    "deploy": "$(node scripts/deploy-command.js)",
+    "add-handler": "npm run add-s3-handler",
+    "add-s3-handler": "claudia add-s3-event-source --profile $npm_package_config_profile --bucket $npm_package_config_s3bucket --events s3:ObjectCreated:*",
+    "add-sns-handler": "claudia add-sns-event-source --profile $npm_package_config_profile --topic $npm_config_sns_topic",
+    "release": "claudia set-version --profile $npm_package_config_profile --version production",
+    "update": "$(node scripts/update-command.js)",
+    "destroy": "AWS_PROFILE=$npm_package_config_profile claudia destroy --profile $npm_package_config_profile"
+  },
+  "keywords": [
+    "aws",
+    "lambda",
+    "image"
+  ],
+  "dependencies": {
+    "aws-sdk": "^2.1011.0",
+    "gm": "^1.23.0",
+    "image-type": "^3.1.0",
+    "path-template": "0.0.0"
+  },
+  "devDependencies": {
+    "ava": "^2.4.0",
+    "aws-sdk-mock": "^1.6.1",
+    "babel-eslint": "^7.2.1",
+    "bind-all": "^1.0.0",
+    "claudia": "^5.14.0",
+    "coveralls": "^3.1.1",
+    "eslint": "^4.19.1",
+    "nyc": "^14.1.1",
+    "pify": "^2.3.0",
+    "sinon": "^1.17.7"
+  }
+}

@@ -1,0 +1,6 @@
+npm config set aws-lambda-image:profile default
+npm config set aws-lambda-image:region ap-southeast-1
+npm config set aws-lambda-image:memory 1280
+npm config set aws-lambda-image:timeout 5
+npm config set aws-lambda-image:name image-resize
+npm config set aws-lambda-image:role image-resize-role
