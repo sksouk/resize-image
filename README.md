@@ -1,6 +1,6 @@
 ### Important Notice
 
-From `nodejs14.x`, AWS Lambda doesn't bundle `ImageMagick` and image related libraries.
+From `nodejs16.x`, AWS Lambda doesn't bundle `ImageMagick` and image related libraries.
 
 ## Configuration
 

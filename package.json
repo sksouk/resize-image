@@ -3,23 +3,23 @@
   "version": "1.1.0",
   "description": "An AWS Lambda Function to resize/reduce images automatically",
   "config": {
-    "profile": "image-resize",
+    "profile": "default",
     "region": "ap-southeast-1",
-    "s3bucket": "resized-image-bucket",
+    "s3bucket": "store-rich-bucket",
     "memory": "1280",
     "timeout": "60",
     "name": "image-resize",
     "role": "LambdaRole",
-    "runtime": "nodejs14.x"
+    "runtime": "nodejs16.x"
   },
   "scripts": {
     "deploy": "$(node scripts/deploy-command.js)",
     "add-handler": "npm run add-s3-handler",
-    "add-s3-handler": "claudia add-s3-event-source --profile $npm_package_config_profile --bucket $npm_package_config_s3bucket --events s3:ObjectCreated:*",
-    "add-sns-handler": "claudia add-sns-event-source --profile $npm_package_config_profile --topic $npm_config_sns_topic",
-    "release": "claudia set-version --profile $npm_package_config_profile --version production",
+    "add-s3-handler": "claudia add-s3-event-source --profile default --bucket store-rich-bucket --events s3:ObjectCreated:*",
+    "add-sns-handler": "claudia add-sns-event-source --profile default --topic $npm_config_sns_topic",
+    "release": "claudia set-version --profile default --version production",
     "update": "$(node scripts/update-command.js)",
-    "destroy": "AWS_PROFILE=$npm_package_config_profile claudia destroy --profile $npm_package_config_profile"
+    "destroy": "AWS_PROFILE=default claudia destroy --profile default"
   },
   "keywords": [
     "aws",

@@ -8,7 +8,7 @@ const {
     region = "ap-southeast-1",
     memory = "1280",
     timeout = "5",
-    runtime = "nodejs14.x",
+    runtime = "nodejs16.x",
     profile,
     name,
     role

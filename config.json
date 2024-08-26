@@ -1,5 +1,5 @@
 {
-    "bucket": "resized-image-bucket",
+    "bucket": "store-rich-bucket",
     "reduce": {
         "directory": "../reduced_70",
         "quality": 70,
